@@ -18,24 +18,18 @@ public class PercolationStats {
 		trials = trials1;
 		percolResult = new double[trials];
 		for (int k = 0; k < trials; k++) {
-			// int count = 0;
 			Percolation perloc = new Percolation(n);
+			
 			while (!perloc.percolates()) {
 				int randi = StdRandom.uniform(n) + 1;
 				int randj = StdRandom.uniform(n) + 1;
-				// randi++;
-				// randj++;
+
 				while (perloc.isOpen(randi, randj)) {
 					randi = StdRandom.uniform(n) + 1;
 					randj = StdRandom.uniform(n) + 1;
-					// randi++;
-					// randj++;
-					// System.out.println("-------3");
 				}
-				// count++;
 				perloc.open(randi, randj);
 			}
-			// System.out.println("count = " + count);
 			percolResult[k] = (double) perloc.numberOfOpenSites() / n / n;
 		}
 	}
